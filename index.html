@@ -66,7 +66,32 @@
             <button id="no-btn">No</button>
         </div>
     </div>
+
+    <!-- Include EmailJS library -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
+        // Initialize EmailJS with your user ID
+        emailjs.init('your_user_id_from_emailjs');
+
+        // Function to send email using EmailJS
+        function sendEmail(choice) {
+            // Prepare email parameters
+            const templateParams = {
+                to_email: 'your_email@example.com', // Replace with your email
+                subject: 'Love Proposal Response',
+                message: `Sakshi chose: ${choice}`
+            };
+
+            // Send email using EmailJS service
+            emailjs.send('your_service_id_from_emailjs', 'your_template_id_from_emailjs', templateParams)
+                .then(function(response) {
+                    console.log('Email sent:', response);
+                }, function(error) {
+                    console.error('Email failed:', error);
+                });
+        }
+
+        // Event listeners for buttons
         const yesBtn = document.getElementById('yes-btn');
         const noBtn = document.getElementById('no-btn');
 
@@ -79,6 +104,7 @@
         });
 
         yesBtn.addEventListener('click', () => {
+            sendEmail('Yes');
             document.body.innerHTML = `
                 <div class="container">
                     <h1>Yay! I love you, Sakshi!</h1>
@@ -86,6 +112,11 @@
                     <img src="https://i.imgur.com/p5PgfIK.jpeg" alt="Romantic Image">
                 </div>
             `;
+        });
+
+        noBtn.addEventListener('click', () => {
+            sendEmail('No');
+            // Handle no response as needed
         });
     </script>
 </body>
