@@ -65,23 +65,6 @@
             <button id="no-btn">No</button>
         </div>
     </div>
-    <!-- Include EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init(CI-r50IVGyLBRkQsi); // Replace with your EmailJS user ID
-        })();
-
-        function sendEmail(answer) {
-            emailjs.send(service_jfc92qw, template_g0uy0xb, {
-                answer: answer
-            }).then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-            }, function(error) {
-                console.log('FAILED...', error);
-            });
-        }
-    </script>
     <script>
         const yesBtn = document.getElementById('yes-btn');
         const noBtn = document.getElementById('no-btn');
@@ -95,7 +78,6 @@
         });
 
         yesBtn.addEventListener('click', () => {
-            sendEmail('Yes');
             document.body.innerHTML = `
                 <div class="container">
                     <h1>Yay! I love you, Sakshi!</h1>
@@ -103,11 +85,6 @@
                     <img src="https://i.imgur.com/p5PgfIK.jpeg" alt="Romantic Image">
                 </div>
             `;
-        });
-
-        noBtn.addEventListener('click', () => {
-            sendEmail('No');
-            alert('You clicked No!');
         });
     </script>
 </body>
