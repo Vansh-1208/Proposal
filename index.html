@@ -69,11 +69,11 @@
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            emailjs.init("CI-r50IVGyLBRkQsi"); // Replace with your EmailJS user ID
+            emailjs.init(CI-r50IVGyLBRkQsi); // Replace with your EmailJS user ID
         })();
 
         function sendEmail(answer) {
-            emailjs.send("service_jfc92qw", "template_g0uy0xb", {
+            emailjs.send(service_jfc92qw, template_g0uy0xb, {
                 answer: answer
             }).then(function(response) {
                 console.log('SUCCESS!', response.status, response.text);
